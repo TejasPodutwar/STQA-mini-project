@@ -76,19 +76,17 @@ include('db.php')
                                             
                                </div>
 							   <div class="form-group">
-                                            <label>Email</label>
-                                            <input name="email" type="email" class="form-control" required>
-                                            
+                                    <label>Email</label>
+                                    <input name="email" type="email" class="form-control" type="email" required>
                                </div>
 							   <div class="form-group">
-                                            <label>Nationality*</label>
-                                            <label class="radio-inline">
-                                                <input type="radio" name="nation"  value="Sri Lankan" checked="">Sri Lankan
-                                            </label>
-                                            <label class="radio-inline">
-                                                <input type="radio" name="nation"  value="Non Sri Lankan ">Non Sri Lankan 
-                                            </label>
-                         
+                                    <label>Nationality*</label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="nation"  value="Indian" checked="">Indian
+                                    </label>
+                                    <label class="radio-inline">
+                                        <input type="radio" name="nation"  value="Non Indian ">Non Indian 
+                                    </label>
                                 </div>
 								<?php
 
@@ -96,19 +94,19 @@ include('db.php')
 
 								?>
 								<div class="form-group">
-                                            <label>Passport Country*</label>
-                                            <select name="country" class="form-control" required>
-												<option value selected ></option>
-                                                <?php
-												foreach($countries as $key => $value):
-												echo '<option value="'.$value.'">'.$value.'</option>'; //close your tags!!
-												endforeach;
-												?>
-                                            </select>
+                                    <label>Passport Country*</label>
+                                    <select name="country" class="form-control" required>
+                                        <option value selected ></option>
+                                        <?php
+                                        foreach($countries as $key => $value):
+                                        echo '<option value="'.$value.'">'.$value.'</option>'; //close your tags!!
+                                        endforeach;
+                                        ?>
+                                    </select>
 								</div>
 								<div class="form-group">
                                             <label>Phone Number</label>
-                                            <input name="phone" type ="text" class="form-control" required>
+                                            <input name="phone" type ="number" min="10" max="10" class="form-control" required>
                                             
                                </div>
 							   
@@ -178,12 +176,12 @@ include('db.php')
                               </div>
 							  <div class="form-group">
                                             <label>Check-In</label>
-                                            <input name="cin" type ="date" class="form-control">
+                                            <input name="cin" type ="date" id="check-in-date" class="form-control">
                                             
                                </div>
 							   <div class="form-group">
                                             <label>Check-Out</label>
-                                            <input name="cout" type ="date" class="form-control">
+                                            <input name="cout" type ="date" id="check-out-date" class="form-control">
                                             
                                </div>
                        </div>
@@ -267,6 +265,24 @@ include('db.php')
     <script src="assets/js/jquery.metisMenu.js"></script>
       <!-- Custom Js -->
     <script src="assets/js/custom-scripts.js"></script>
+    <script>
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1; 
+        var yyyy = today.getFullYear();
+
+        if (dd < 10) {
+        dd = '0' + dd;
+        }
+
+        if (mm < 10) {
+        mm = '0' + mm;
+        } 
+            
+        today = yyyy + '-' + mm + '-' + dd;
+        document.getElementById("check-in-date").setAttribute("min", today);
+        document.getElementById("check-out-date").setAttribute("min", today);
+    </script>
     
    
 </body>
